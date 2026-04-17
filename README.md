@@ -1,70 +1,169 @@
-# Getting Started with Create React App
+# 🧠 Sanskrit RAG Frontend (React UI)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📌 Overview
 
-## Available Scripts
+This is the frontend interface for the Sanskrit Retrieval-Augmented Generation (RAG) system. It provides a clean and interactive UI for users to:
 
-In the project directory, you can run:
+* Upload Sanskrit documents (.txt / .pdf)
+* Ask questions in Sanskrit (or transliterated text)
+* View generated answers based on retrieved context
 
-### `npm start`
+The frontend communicates with a Flask-based backend via REST APIs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Features
 
-### `npm test`
+* 📄 File upload support (.txt, .pdf)
+* 💬 Chat-style question-answer interface
+* ⚡ Real-time API interaction
+* 🔒 Input validation (prevents querying before upload)
+* 📱 Responsive UI (works on desktop and mobile)
+* 🎨 Clean and modern design using Bootstrap + custom CSS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🛠️ Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* **React.js** – UI development
+* **Bootstrap** – Styling and responsiveness
+* **Axios** – API communication
+* **JavaScript (ES6+)**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📂 Project Structure
 
-### `npm run eject`
+```
+frontend/
+│
+├── src/
+│   ├── App.js
+│   ├── App.css
+│   ├── index.js
+│   │
+│   ├── services/
+│   │   └── api.js
+│
+├── public/
+├── package.json
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## ⚙️ Setup Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. Clone the repository
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+git clone <your-repo-url>
+cd frontend
+```
 
-## Learn More
+### 2. Install dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 3. Start the development server
 
-### Code Splitting
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The app will run on:
 
-### Analyzing the Bundle Size
+```
+http://localhost:3000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🔗 Backend Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Ensure the backend server is running at:
 
-### Advanced Configuration
+```
+http://127.0.0.1:5000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Update API base URL in:
 
-### Deployment
+```
+src/services/api.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 📡 API Endpoints Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 1. Upload Document
+
+```
+POST /upload
+```
+
+* Sends file using FormData
+* Builds retrieval index on backend
+
+---
+
+### 2. Query
+
+```
+POST /query
+```
+
+Request:
+
+```
+{
+  "query": "धर्मः किम्?"
+}
+```
+
+Response:
+
+```
+{
+  "answer": "..."
+}
+```
+
+---
+
+## 🧠 Usage Flow
+
+1. Upload a Sanskrit document
+2. Wait for successful processing
+3. Enter a query
+4. View generated answer in chat interface
+
+---
+
+## Notes & Limitations
+
+* Only one document is active at a time
+* Uploading a new file replaces the previous context
+* Requires backend to be running
+* Model performance depends on document quality and query clarity
+
+---
+
+## 💡 Future Improvements
+
+* Chat history persistence
+* Multi-document support
+* Typing animation for responses
+* File upload progress indicator
+* User session handling
+
+---
+
+## 👨‍💻 Author
+
+Shreyas Awade
+
+---
+
